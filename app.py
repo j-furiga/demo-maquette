@@ -5,27 +5,6 @@ import numpy as np
 
 st.set_page_config(layout="wide")
 
-# Initialize session state for authentication
-if 'authenticated' not in st.session_state:
-    st.session_state.authenticated = False
-
-# Password authentication
-def authenticate(password):
-    return password == "monitron2024"  # You can change this password
-
-# Login form
-if not st.session_state.authenticated:
-    st.title("Login Required")
-    password = st.text_input("Enter password", type="password")
-    if st.button("Login"):
-        if authenticate(password):
-            st.session_state.authenticated = True
-            st.experimental_user()
-        else:
-            st.error("Incorrect password")
-    st.stop()  # Don't show the rest of the app if not authenticated
-
-# Rest of your app code starts here
 # Define threshold limits
 TEMP_LIMIT = 80  # Celsius - typical max for industrial motors
 VIB_ISO_LIMIT = 7.1  # mm/s - ISO 20816 Zone B/C boundary for medium machines
